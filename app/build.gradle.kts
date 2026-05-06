@@ -40,6 +40,7 @@ android {
 }
 
 dependencies {
+
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.androidx.lifecycle.runtime.compose)
     implementation(libs.androidx.core.ktx)
@@ -70,7 +71,6 @@ dependencies {
 
     //ktor
     implementation(libs.ktor.client.android)
-
 
 
 
