@@ -2,7 +2,12 @@ package com.dorothy.baselineapp.ui.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import com.dorothy.baselineapp.ui.screens.authentication.Login.LoginScreen
 import com.dorothy.baselineapp.ui.screens.authentication.forgotpassword.ForgotPasswordScreen
+import com.dorothy.baselineapp.ui.screens.authentication.register.RegisterScreen
 
 
 @Composable

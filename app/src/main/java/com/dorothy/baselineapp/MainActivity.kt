@@ -15,7 +15,9 @@ import com.dorothy.baselineapp.ui.theme.BaselineappTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
+        val splashScreen = InstallSplashScreen()
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
         enableEdgeToEdge()
         setContent {
             BaselineappTheme {
