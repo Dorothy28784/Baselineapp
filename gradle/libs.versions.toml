@@ -1,6 +1,7 @@
 [versions]
-agp = "8.7.3"
-bom = "3.5.0"
+agp = "9.1.1"
+bom = "3.0.0"
+browser = "1.10.0"
 coreKtx = "1.15.0"
 coreSplashscreen = "1.0.1"
 junit = "4.13.2"
@@ -11,22 +12,23 @@ ktorClientAndroid = "3.0.1"
 lifecycleRuntimeCompose = "2.8.7"
 lifecycleRuntimeKtx = "2.8.7"
 activityCompose = "1.9.3"
-kotlin = "2.1.0"
+kotlin = "2.2.10"
 kotlinxSerialization = "1.7.3"
 composeBom = "2024.11.00"
 lifecycleViewmodelKtx = "2.8.7"
 navigationRuntimeKtx = "2.8.5"
 room = "2.6.1"
-ksp = "2.1.0-1.0.29"
+ksp = "2.3.2"
 
 [libraries]
+androidx-browser = { module = "androidx.browser:browser", version.ref = "browser" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 androidx-core-splashscreen = { module = "androidx.core:core-splashscreen", version.ref = "coreSplashscreen" }
 androidx-lifecycle-runtime-compose = { module = "androidx.lifecycle:lifecycle-runtime-compose", version.ref = "lifecycleRuntimeCompose" }
 androidx-lifecycle-viewmodel-compose = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "lifecycleViewmodelKtx" }
 androidx-lifecycle-viewmodel-ktx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycleViewmodelKtx" }
-androidx-navigation-compose = { module = "androidx.navigation:navigation-compose" }
-auth-kt = { module = "io.github.jan-tennert.supabase:auth-kt" }
+androidx-navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "navigationRuntimeKtx" }
+auth-kt = { module = "io.github.jan-tennert.supabase:auth-kt", version.ref = "bom" }
 bom = { module = "io.github.jan-tennert.supabase:bom", version.ref = "bom" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
@@ -46,9 +48,9 @@ androidx-compose-material3 = { group = "androidx.compose.material3", name = "mat
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinxSerializationJson" }
 ktor-client-android = { module = "io.ktor:ktor-client-android", version.ref = "ktorClientAndroid" }
 lottie-compose = { module = "com.airbnb.android:lottie-compose", version = "6.7.1" }
-postgrest-kt = { module = "io.github.jan-tennert.supabase:postgrest-kt" }
-realtime-kt = { module = "io.github.jan-tennert.supabase:realtime-kt" }
-storage-kt = { module = "io.github.jan-tennert.supabase:storage-kt" }
+postgrest-kt = { module = "io.github.jan-tennert.supabase:postgrest-kt", version.ref = "bom" }
+realtime-kt = { module = "io.github.jan-tennert.supabase:realtime-kt", version.ref = "bom" }
+storage-kt = { module = "io.github.jan-tennert.supabase:storage-kt", version.ref = "bom" }
 androidx-navigation-runtime-ktx = { group = "androidx.navigation", name = "navigation-runtime-ktx", version.ref = "navigationRuntimeKtx" }
 androidx-room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "room" }
 androidx-room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "room" }
@@ -58,4 +60,5 @@ androidx-room-compiler = { group = "androidx.room", name = "room-compiler", vers
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
-
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }

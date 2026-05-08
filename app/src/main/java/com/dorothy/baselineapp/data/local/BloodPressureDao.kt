@@ -1,6 +1,9 @@
 package com.dorothy.baselineapp.data.local
 
-import androidx.room.*
+import androidx.room.Dao
+import androidx.room.Insert
+import androidx.room.OnConflictStrategy
+import androidx.room.Query
 import com.dorothy.baselineapp.data.Model.BloodPressure
 import kotlinx.coroutines.flow.Flow
 
@@ -12,6 +15,6 @@ interface BloodPressureDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(bloodPressure: BloodPressure)
 
-    @Delete
-    suspend fun delete(bloodPressure: BloodPressure)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertAll(readings: List<BloodPressure>)
 }
