@@ -9,8 +9,10 @@ import com.dorothy.baselineapp.ui.screens.authentication.Login.LoginScreen
 import com.dorothy.baselineapp.ui.screens.authentication.forgotpassword.ForgotPasswordScreen
 import com.dorothy.baselineapp.ui.screens.authentication.register.RegisterScreen
 import com.dorothy.baselineapp.ui.screens.authentication.signup.SignupScreen
-import com.dorothy.baselineapp.ui.screens.home.HomeScreen
+import com.dorothy.baselineapp.ui.screens.HomeScreen.HomeScreen
 import com.dorothy.baselineapp.ui.screens.onboarding.OnboardingScreen
+import com.dorothy.baselineapp.ui.screens.AddScreen.AddScreen
+import androidx.lifecycle.viewmodel.compose.viewModel
 
 
 @Composable
@@ -35,5 +37,11 @@ fun AppNavigation(
         composable(ROUTES.Register.name) { RegisterScreen(navController = navController) }
         composable(ROUTES.Signup.name) { SignupScreen(navController = navController) }
         composable(ROUTES.Home.name) { HomeScreen(navController = navController) }
+        composable(ROUTES.Add.name) { 
+            AddScreen(
+                navController = navController,
+                viewModel = viewModel()
+            ) 
+        }
     }
 }

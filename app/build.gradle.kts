@@ -1,20 +1,18 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.ksp)
+    kotlin("plugin.serialization") version "2.1.0"
 }
 
 android {
     namespace = "com.dorothy.baselineapp"
-    compileSdk {
-        version = release(36) {
-            minorApiLevel = 1
-        }
-    }
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.dorothy.baselineapp"
         minSdk = 24
-        targetSdk = 36
+        targetSdk = 35
         versionCode = 1
         versionName = "1.0"
 
@@ -31,8 +29,8 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     buildFeatures {
         compose = true
@@ -68,7 +66,7 @@ dependencies {
     debugImplementation(libs.androidx.compose.ui.test.manifest)
 
 
-     //supabase
+    //supabase
 
     implementation(platform(libs.bom))
     implementation(libs.postgrest.kt)
@@ -76,9 +74,12 @@ dependencies {
     implementation(libs.realtime.kt)
     implementation(libs.storage.kt)
 
-    //ktor
-    implementation(libs.ktor.client.android)
-
-
-
+    // Room
+    implementation(libs.androidx.room.runtime)
+    implementation(libs.androidx.room.ktx)
+    ksp(libs.androidx.room.compiler)
 }
+
+
+
+

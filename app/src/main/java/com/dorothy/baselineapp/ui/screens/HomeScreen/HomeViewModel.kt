@@ -1,4 +1,4 @@
-package com.dorothy.baselineapp.ui.screens.home
+package com.dorothy.baselineapp.ui.screens.HomeScreen
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

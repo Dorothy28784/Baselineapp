@@ -10,6 +10,8 @@ interface AuthService {
     suspend fun getUserProfile(user: UserModel)
     suspend fun logoutUser()
     suspend fun getCurrentUserEmail(): String?
+
+
 }
 
 

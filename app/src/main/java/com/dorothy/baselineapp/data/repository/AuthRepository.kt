@@ -10,7 +10,7 @@ import io.github.jan.supabase.storage.Storage
 
 class AuthRepository : AuthService {
 
-    private val supabase = createSupabaseClient(
+    val supabase = createSupabaseClient(
         supabaseUrl = "https://jnauygiimqrlyilkougc.supabase.co",
         supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpuYXV5Z2lpbXFybHlpbGtvdWdjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzczMzgzNTksImV4cCI6MjA5MjkxNDM1OX0.sDgeYTFiDEimahf_zGUDilhoYhw_Id846hNiJS6bz6k"
     ) {
@@ -38,9 +38,8 @@ class AuthRepository : AuthService {
     }
 
     override suspend fun getUserProfile(user: UserModel) {
-        // We'll update this to return actual user profile data if needed
-        // For now, let's keep it as is or implement a basic fetch
     }
+
 
     override suspend fun getCurrentUserEmail(): String? {
         return try {
