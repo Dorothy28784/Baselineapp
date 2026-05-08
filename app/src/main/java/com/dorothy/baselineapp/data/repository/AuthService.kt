@@ -9,6 +9,7 @@ interface AuthService {
     suspend fun resetPassword(email: String)
     suspend fun getUserProfile(user: UserModel)
     suspend fun logoutUser()
+    suspend fun getCurrentUserEmail(): String?
 }
 
 

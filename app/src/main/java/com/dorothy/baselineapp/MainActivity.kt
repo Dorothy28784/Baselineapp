@@ -7,23 +7,24 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import androidx.navigation.compose.rememberNavController
+import com.dorothy.baselineapp.ui.navigation.AppNavigation
 import com.dorothy.baselineapp.ui.theme.BaselineappTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
-        val splashScreen = InstallSplashScreen()
+        installSplashScreen()
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
         enableEdgeToEdge()
         setContent {
             BaselineappTheme {
+                val navController = rememberNavController()
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
+                    AppNavigation(
+                        navController = navController,
                         modifier = Modifier.padding(innerPadding)
                     )
                 }
@@ -32,18 +33,14 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
 
-@Preview(showBackground = true)
+
+
+
+
 @Composable
 fun GreetingPreview() {
     BaselineappTheme {
-        Greeting("Android")
+
     }
 }
