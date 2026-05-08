@@ -1,4 +1,4 @@
-package com.dorothy.baselineapp.ui.screens.authentication.Login
+package com.dorothy.baselineapp.ui.screens.authentication.signup
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.KeyboardOptions
@@ -18,49 +18,44 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import com.dorothy.baselineapp.data.Model.UserModel
 import com.dorothy.baselineapp.ui.navigation.ROUTES
+import com.dorothy.baselineapp.ui.screens.authentication.register.RegistrationViewModel
 
 @Composable
-fun LoginScreen(
-    modifier: Modifier = Modifier,
+fun SignupScreen(
     navController: NavHostController,
-    viewModel: LoginViewModel = viewModel()
-){
+    viewModel: RegistrationViewModel = viewModel()
+) {
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
+    var confirmPassword by remember { mutableStateOf("") }
+
     val uiState by viewModel.uiState.collectAsState()
 
+    // Handle Success Navigation
     LaunchedEffect(uiState.isSuccess) {
         if (uiState.isSuccess) {
-            navController.navigate(ROUTES.Home.name) {
-                popUpTo(ROUTES.Login.name) { inclusive = true }
+            navController.navigate(ROUTES.Login.name) {
+                popUpTo(ROUTES.Signup.name) { inclusive = true }
             }
         }
     }
 
     Column(
-        modifier = modifier
+        modifier = Modifier
             .fillMaxSize()
             .padding(24.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
-        if (uiState.errorMessage != null) {
-            Text(
-                text = uiState.errorMessage!!,
-                color = MaterialTheme.colorScheme.error,
-                modifier = Modifier.padding(bottom = 16.dp)
-            )
-        }
-
         Text(
-            text = "Welcome Back",
+            text = "Sign Up",
             fontSize = 32.sp,
             fontWeight = FontWeight.Bold,
             color = MaterialTheme.colorScheme.primary
         )
 
         Text(
-            text = "Login to your account",
+            text = "Create a new account",
             fontSize = 16.sp,
             color = MaterialTheme.colorScheme.onSurfaceVariant
         )
@@ -92,11 +87,36 @@ fun LoginScreen(
             singleLine = true
         )
 
+        Spacer(modifier = Modifier.height(16.dp))
+
+        // Confirm Password Field
+        OutlinedTextField(
+            value = confirmPassword,
+            onValueChange = { confirmPassword = it },
+            label = { Text("Confirm Password") },
+            leadingIcon = { Icon(Icons.Default.Lock, contentDescription = null) },
+            modifier = Modifier.fillMaxWidth(),
+            visualTransformation = PasswordVisualTransformation(),
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
+            singleLine = true
+        )
+
+        // Error Message
+        if (uiState.errorMessage != null) {
+            Text(
+                text = uiState.errorMessage!!,
+                color = MaterialTheme.colorScheme.error,
+                modifier = Modifier.padding(top = 8.dp)
+            )
+        }
+
         Spacer(modifier = Modifier.height(32.dp))
 
-        // Login Button
+        // Signup Button
         Button(
-            onClick = { viewModel.loginUser(UserModel(email, password)) },
+            onClick = {
+                viewModel.registerUser(UserModel(email, password), confirmPassword)
+            },
             modifier = Modifier.fillMaxWidth(),
             enabled = !uiState.isLoading
         ) {
@@ -107,20 +127,15 @@ fun LoginScreen(
                     strokeWidth = 2.dp
                 )
             } else {
-                Text("Login")
+                Text("Sign Up")
             }
         }
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        // Register Link
-        TextButton(onClick = { navController.navigate(ROUTES.Register.name) }) {
-            Text("Don't have an account? Register")
-        }
-        
-        // Forgot Password Link
-        TextButton(onClick = { navController.navigate(ROUTES.ForgotPassword.name) }) {
-            Text("Forgot Password?")
+        // Login Link
+        TextButton(onClick = { navController.navigate(ROUTES.Login.name) }) {
+            Text("Already have an account? Login")
         }
     }
 }

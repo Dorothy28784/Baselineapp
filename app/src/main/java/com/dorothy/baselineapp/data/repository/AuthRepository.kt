@@ -1,6 +1,6 @@
 package com.dorothy.baselineapp.data.repository
 
-import com.dorothy.baselineapp.data.models.UserModel
+import com.dorothy.baselineapp.data.Model.UserModel
 import io.github.jan.supabase.createSupabaseClient
 import io.github.jan.supabase.auth.Auth
 import io.github.jan.supabase.auth.auth

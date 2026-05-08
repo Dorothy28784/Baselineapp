@@ -42,7 +42,12 @@ fun HomeScreen(
             }
             
             Spacer(modifier = Modifier.height(24.dp))
-            
+
+            Text(
+                text = "This is the Home Screen",
+                style = MaterialTheme.typography.bodyLarge
+            )
+
             Button(
                 onClick = {
                     viewModel.logout()
@@ -54,5 +59,14 @@ fun HomeScreen(
                 Text("Sign Out")
             }
         }
+
+        Button(
+            onClick = {
+                navController.navigate("add")
+            }
+        ){
+            Text("Add reading")
+        }
     }
 }
+

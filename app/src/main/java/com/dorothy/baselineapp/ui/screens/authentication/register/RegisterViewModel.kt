@@ -2,7 +2,7 @@ package com.dorothy.baselineapp.ui.screens.authentication.register
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.dorothy.baselineapp.data.models.UserModel
+import com.dorothy.baselineapp.data.Model.UserModel
 import com.dorothy.baselineapp.data.repository.AuthRepository
 import com.dorothy.baselineapp.data.repository.AuthService
 import kotlinx.coroutines.flow.MutableStateFlow

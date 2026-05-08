@@ -1,6 +1,6 @@
 package com.dorothy.baselineapp.data.repository
 
-import com.dorothy.baselineapp.data.models.UserModel
+import com.dorothy.baselineapp.data.Model.UserModel
 
 
 interface AuthService {
